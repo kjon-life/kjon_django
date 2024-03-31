@@ -8,17 +8,17 @@ from dotenv import load_dotenv
 def main():
     """Run administrative tasks."""
     """LOCAL"""
-    dotenv_path = os.path.expanduser('/usr/local/var/www/.config/django/.env')  # adjust to the .env location
+    # Set default settings module for the 'manage.py' command-line utility before loading .env file.
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'kjon_django.settings')
+
+    # Load the .env file
+    dotenv_path = os.path.expanduser('.env')
     load_dotenv(dotenv_path)
 
-    from django.core.management import execute_from_command_line
-
-    execute_from_command_line(sys.argv)
-
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "kjon_django.settings")
     """DEV"""
     """PROD"""
 
+    # Import and execute the command-line utility.
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:

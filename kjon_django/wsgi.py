@@ -15,7 +15,7 @@ from dotenv import load_dotenv
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "kjon_django.settings")
 """DEV"""
 
-dotenv_path = os.path.expanduser('/usr/local/var/www/.config/django/.env')  # adjust to the .env location
+dotenv_path = os.path.expanduser('.env')  # adjust to the .env location
 load_dotenv(dotenv_path)
 
 application = get_wsgi_application()
