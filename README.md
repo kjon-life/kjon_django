@@ -29,11 +29,14 @@ This is a project that feeds my developer portfoio. To connect:
 
 
 ### Project Overview:
-* 
+* Gunicorn is a Python WSGI HTTP Server for UNIX, perfect for serving Django projects in production
+* Postgres
+* WhiteNoise to serve static files
 * GitHub Actions deploys main to dev automatically
 
 ### Tech stack:
-* 
+* Gunicorn
+* Post 
 * Docker - for containerization
 * flyctl - for manual deployment
 * GitHub Actions - for CI/CD
