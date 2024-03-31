@@ -16,16 +16,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.http import HttpResponse
-from django.urls import path
+from django.urls import path, include
+from django.conf import settings
 from django_otp.admin import OTPAdminSite
 
 
 # ↓ New basic view returning "Hello, kjon!" ↓
-def hello(request):
-    return HttpResponse("Hello, kjon!")
+#def hello(request):
+#    return HttpResponse("Hello, kjon!")
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path('', include('hello.urls')),  # Include hello
 ]
 
 # Enforce 2FA only in production from DEBUG check

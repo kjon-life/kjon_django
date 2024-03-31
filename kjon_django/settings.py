@@ -55,6 +55,9 @@ INSTALLED_APPS = [
     'django_otp.plugins.otp_static',
     'whitenoise.runserver_nostatic', 
     "django.contrib.staticfiles",
+
+    # local apps
+    'hello',
 ]
 
 MIDDLEWARE = [
@@ -150,7 +153,9 @@ USE_TZ = True
 STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
+STATICFILES_DIRS = [
+    BASE_DIR / 'hello' / 'static',
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
