@@ -25,7 +25,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [f"{os.environ.get('FLY_APP_NAME')}.fly.dev"]
 
 
 # Application definition
@@ -48,6 +48,8 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
+CSRF_TRUSTED_ORIGINS = ['https://*.fly.dev']
 
 ROOT_URLCONF = "kjon_django.urls"
 
