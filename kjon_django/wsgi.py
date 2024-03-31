@@ -10,7 +10,12 @@ https://docs.djangoproject.com/en/5.0/howto/deployment/wsgi/
 import os
 
 from django.core.wsgi import get_wsgi_application
+from dotenv import load_dotenv
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "kjon_django.settings")
+"""DEV"""
+
+dotenv_path = os.path.expanduser('/usr/local/var/www/.config/django/.env')  # adjust to the .env location
+load_dotenv(dotenv_path)
 
 application = get_wsgi_application()
