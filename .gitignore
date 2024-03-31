@@ -1,6 +1,7 @@
 # asdf stuff
 .tool-versions
 
+# 
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -63,7 +64,10 @@ cover/
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
+
+# Postgres stuff:
 logfile
+/usr/local/var/www/.config/django/.env
 
 # Flask stuff:
 instance/
