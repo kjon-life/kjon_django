@@ -17,6 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.http import HttpResponse
 from django.urls import path
+from django_otp.admin import OTPAdminSite
+
 
 # ↓ New basic view returning "Hello, kjon!" ↓
 def hello(request):
@@ -25,3 +27,7 @@ def hello(request):
 urlpatterns = [
     path("admin/", admin.site.urls),
 ]
+
+# Enforce 2FA only in production from DEBUG check
+if not settings.DEBUG:
+    admin.site.__class__ = OTPAdminSite

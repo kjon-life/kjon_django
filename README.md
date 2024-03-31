@@ -32,13 +32,15 @@ This is a project that feeds my developer portfoio. To connect:
 * Gunicorn is a Python WSGI HTTP Server for UNIX, perfect for serving Django projects in production
 * Postgres
 * WhiteNoise to serve static files
+* Authenticate with 2FA
 * GitHub Actions deploys main to dev automatically
 
 ### Tech stack:
 * Gunicorn
-* Post 
-* Docker - for containerization
-* flyctl - for manual deployment
+* Postgres
+* django-environ - separate local,dev,prod
+* Docker - to package Django apps as image
+* flyctl - to build images, config toml, and deploy
 * GitHub Actions - for CI/CD
 * Fly.io - for the serverless hosting platform
 
@@ -46,10 +48,8 @@ This is a project that feeds my developer portfoio. To connect:
 You can read about it [here](https://fly.io/docs/hands-on/).
 
 ### History:  
-### Serverless hosted Django
+#### Serverless hosted Django w Postgres
 
-
-### Basic Template 
 
 
 ### Acknowledgements:
