@@ -40,7 +40,8 @@ DEBUG = env.bool('DEBUG', default=False)
 # ALLOWED_HOSTS = [f"{os.environ.get('FLY_APP_NAME')}.fly.dev"]
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['.fly.dev'])
 
-
+# SECURITY OPTION: Prevents all framing of the site, prevents embedding in iframes or frame
+X_FRAME_OPTIONS = 'DENY'
 
 # Application definition
 
