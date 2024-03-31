@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 
 def main():
     """Run administrative tasks."""
+    """LOCAL"""
     dotenv_path = os.path.expanduser('/usr/local/var/www/.config/django/.env')  # adjust to the .env location
     load_dotenv(dotenv_path)
 
@@ -16,6 +17,7 @@ def main():
 
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "kjon_django.settings")
     """DEV"""
+    """PROD"""
 
     try:
         from django.core.management import execute_from_command_line
