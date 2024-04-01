@@ -30,7 +30,7 @@ environ.Env.read_env(BASE_DIR / '.env')
 
 # SECURITY WARNING: the SECRET key in this repo is dead so don't waste your time!
 # SECRET_KEY = os.getenv('SECRET_KEY')
-SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = env.str('SECRET_KEY', default=get_random_secret_key())
 
 
 # SECURITY WARNING: don't run with debug turned on in production!

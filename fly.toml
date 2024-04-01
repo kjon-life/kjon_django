@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for kjon-django on 2024-03-31T20:54:55-05:00
+# fly.toml app configuration file generated for kjon-django-proud-dream-2622 on 2024-03-31T22:45:08-05:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'kjon-django'
+app = 'kjon-django-proud-dream-2622'
 primary_region = 'iad'
 console_command = '/code/manage.py shell'
 
