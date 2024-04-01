@@ -18,6 +18,7 @@ Table of contents
 07. testimonials
 08. contact
 09. footer
+10. social
 
 --------------------------------------------- */
 /* 
@@ -1905,4 +1906,14 @@ body {
   .fun-facts:before {
     width: 95%;
   }
+}
+
+/* 
+---------------------------------------------
+Social Style
+--------------------------------------------- 
+*/
+
+.fa-linkedin, .fa-github {
+  color: #7A6AD8; /* Directly sets the color value */
 }

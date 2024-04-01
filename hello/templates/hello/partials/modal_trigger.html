@@ -1,0 +1,12 @@
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var contactSection = document.getElementById('contact');
+      var featureModal = new bootstrap.Modal(document.getElementById('featureModal'), {
+        keyboard: false
+      });
+  
+      contactSection.addEventListener('click', function () {
+        featureModal.show();
+      });
+    });
+  </script>
