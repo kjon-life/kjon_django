@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 import os
 from pathlib import Path
+
 import environ
 # generate a random secret key
 from django.core.management.utils import get_random_secret_key
@@ -30,12 +31,14 @@ environ.Env.read_env(BASE_DIR / '.env')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
-# using macOS to get env variables:
-# SECRET_KEY = os.getenv('SECRET_KEY')
-# use with django management utils:
-SECRET_KEY = env.str('SECRET_KEY', default=get_random_secret_key())
-# use `django-environ` to get the key from an env
+## using macOS to get env variables:
+#SECRET_KEY = os.getenv('SECRET_KEY')
+## use with django management utils:
+#SECRET_KEY = env.str('SECRET_KEY', default=get_random_secret_key())
+## use `django-environ` to get the key from an env
 # SECRET_KEY = env.str('SECRET_KEY')
+# better still, read ../slides_local_docs/flyio-secrets.md 
+SECRET_KEY = os.environ.get('SECRET_KEY', get_random_secret_key())
 
 
 
@@ -106,20 +109,10 @@ WSGI_APPLICATION = "kjon_django.wsgi.application"
 
 
 # Database
-# https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.sqlite3",
-#         "NAME": BASE_DIR / "db.sqlite3",
-#     }
-# }
 
-# set the variables w `flyctl secrets`
-# like
-# flyctl secrets set SECRET_KEY=your_secret_key
-# flyctl secrets set DEBUG=false
-# # ... set other environment variables`
+# DATABASE_URL=postgres://DJANGO_DB_USER:DJANGO_DB_PASSWORD@DJANGO_DB_HOST:DJANGO_DB_PORT/DJANGO_DB_NAME
+# DATABASE_URL=postgres://DJANGO_DB_USER:DJANGO_DB_PASSWORD@DJANGO_DB_HOST:DJANGO_DB_PORT/DJANGO_DB_NAME
 DATABASES = {
     'default': {
         'ENGINE': os.environ.get('DJANGO_DB_ENGINE', 'django.db.backends.postgresql'),
