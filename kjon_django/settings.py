@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 import os
 from pathlib import Path
 import environ
+# generate a random secret key
+from django.core.management.utils import get_random_secret_key
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -28,9 +30,12 @@ environ.Env.read_env(BASE_DIR / '.env')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
-# SECURITY WARNING: the SECRET key in this repo is dead so don't waste your time!
 # SECRET_KEY = os.getenv('SECRET_KEY')
+# use with django management utils
 SECRET_KEY = env.str('SECRET_KEY', default=get_random_secret_key())
+# use `django-environ` to get the key from an environment variable
+# SECRET_KEY = env.str('SECRET_KEY')
+
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
