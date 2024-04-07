@@ -50,7 +50,10 @@ You can read about it [here](https://fly.io/docs/hands-on/).
 ### History:  
 #### Serverless hosted Django w Postgres
 
-
+#### Local Django
+* Postgres
+* Using a templatemo-scholar template
+![](hello/static/images/iterations/2024-04-06-23-28-17.png)
 
 ### Acknowledgements:
 
