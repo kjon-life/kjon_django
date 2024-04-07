@@ -1,7 +1,9 @@
 # asdf stuff
 .tool-versions
 
-# 
+# fly.io stuff
+.env.local
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
