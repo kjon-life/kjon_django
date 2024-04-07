@@ -28,6 +28,7 @@ from django_otp.admin import OTPAdminSite
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('', include('hello.urls')),  # Include hello
+    #path('accounts/', include('allauth.urls')),  # Include allauth
 ]
 
 # Enforce 2FA only in production from DEBUG check
