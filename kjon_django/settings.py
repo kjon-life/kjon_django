@@ -19,7 +19,7 @@ from django.core.management.utils import get_random_secret_key
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# initialize reader
+# initialize reader (environ.Env reads from env)
 env = environ.Env(
     # set casting, default value
     DEBUG=(bool, False),
@@ -30,19 +30,23 @@ environ.Env.read_env(BASE_DIR / '.env')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
+# using macOS to get env variables:
 # SECRET_KEY = os.getenv('SECRET_KEY')
-# use with django management utils
+# use with django management utils:
 SECRET_KEY = env.str('SECRET_KEY', default=get_random_secret_key())
-# use `django-environ` to get the key from an environment variable
+# use `django-environ` to get the key from an env
 # SECRET_KEY = env.str('SECRET_KEY')
 
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
+# use django-environ to read environment variables
 DEBUG = env.bool('DEBUG', default=False)
 
+# use python `os.environ` to get the allowed hosts`
 # ALLOWED_HOSTS = [f"{os.environ.get('FLY_APP_NAME')}.fly.dev"]
+# or use django-environ to read environment variables
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['.fly.dev'])
 
 # SECURITY OPTION: Prevents all framing of the site, prevents embedding in iframes or frame
@@ -111,6 +115,11 @@ WSGI_APPLICATION = "kjon_django.wsgi.application"
 #     }
 # }
 
+# set the variables w `flyctl secrets`
+# like
+# flyctl secrets set SECRET_KEY=your_secret_key
+# flyctl secrets set DEBUG=false
+# # ... set other environment variables`
 DATABASES = {
     'default': {
         'ENGINE': os.environ.get('DJANGO_DB_ENGINE', 'django.db.backends.postgresql'),

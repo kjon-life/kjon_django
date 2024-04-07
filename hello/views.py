@@ -8,3 +8,6 @@ def index(request):
         'MY_GITHUB_PROFILE_URL': MY_GITHUB_PROFILE_URL,
     }
     return render(request, 'hello/index.html', context)
+
+def health_hi(request):
+    return HttpResponse("Hi", status=200)

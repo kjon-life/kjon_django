@@ -3,7 +3,7 @@
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'kjon-django-proud-dream-2622'
+app = 'kjon-django'
 primary_region = 'iad'
 console_command = '/code/manage.py shell'
 
@@ -31,3 +31,20 @@ console_command = '/code/manage.py shell'
 [[statics]]
   guest_path = '/code/static'
   url_prefix = '/static/'
+
+[[services.http_checks]]
+  grace_period = "10s"
+  interval = "30s"
+  method = "GET"
+  timeout = "5s"
+  path = "/"
+
+[[services.tcp_checks]]
+  interval = "15s"
+  timeout = "2s"
+  grace_period = "1s"
+  restart_limit = 0
+
+[services]
+  auto_stop_machines = true
+  auto_start_machines = true
