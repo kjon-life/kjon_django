@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render
 from .constants import MY_LINKEDIN_PROFILE_URL, MY_GITHUB_PROFILE_URL
 

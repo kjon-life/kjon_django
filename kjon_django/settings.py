@@ -12,7 +12,8 @@ from pathlib import Path
 import environ
 # generate a random secret key
 from django.core.management.utils import get_random_secret_key
-
+# for rationale, read ../slides_local_docs/flyio-db.md
+import dj_database_url # type: ignore
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -94,9 +95,13 @@ WSGI_APPLICATION = "kjon_django.wsgi.application"
 
 
 # Database
+if 'DATABASE_URL' not in os.environ:
+    raise ValueError('DATABASE_URL environment variable is missing')
+
 DATABASES = {
     'default': env.db(),
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators

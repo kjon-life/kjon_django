@@ -169,5 +169,6 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
-# Build notes
-/slides_local_docs
+# Build notes and misc
+slides_local_docs/
+.DS_Store

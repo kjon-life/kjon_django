@@ -3,3 +3,7 @@ fly.toml
 *.sqlite3
 .env
 .env.local
+slides_local_docs/
+.DS_Store
+.tool_versions
+bash/
