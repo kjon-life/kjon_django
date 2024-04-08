@@ -28,10 +28,21 @@ environ.Env.read_env(BASE_DIR / '.env')
 # for rationale, read ../slides_local_docs/flyio-secrets.md 
 SECRET_KEY = os.environ.get('SECRET_KEY', get_random_secret_key())
 
-# use python `os.environ` to get the allowed hosts
+# ALLOWED_HOSTS
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split(',')
 if not ALLOWED_HOSTS:
-    ALLOWED_HOSTS = ['.fly.dev']
+    if 'FLY_APP_NAME' in os.environ:  # Check if running on Fly.io
+        ALLOWED_HOSTS = [f"{os.environ['FLY_APP_NAME']}.fly.dev"]
+    else:
+        ALLOWED_HOSTS = []
+
+# CSRF_TRUSTED_ORIGINS
+CSRF_TRUSTED_ORIGINS = os.environ.get('CSRF_TRUSTED_ORIGINS', '').split(',')
+if not CSRF_TRUSTED_ORIGINS:
+    if 'FLY_APP_NAME' in os.environ:  # Check if running on Fly.io
+        CSRF_TRUSTED_ORIGINS = [f"https://{os.environ['FLY_APP_NAME']}.fly.dev"]
+    else:
+        CSRF_TRUSTED_ORIGINS = []
 
 # SECURITY OPTION: Prevents all framing of the site, prevents embedding in iframes or frame
 X_FRAME_OPTIONS = 'DENY'
@@ -67,13 +78,6 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = "kjon_django.urls"
-
-# CSRF_TRUSTED_ORIGINS set in flyctl secrets and in env 
-CSRF_TRUSTED_ORIGINS = []
-if 'CSRF_TRUSTED_ORIGINS' in os.environ:
-    CSRF_TRUSTED_ORIGINS = os.environ['CSRF_TRUSTED_ORIGINS'].split(',')
-if not CSRF_TRUSTED_ORIGINS:
-    CSRF_TRUSTED_ORIGINS = ['https://*.fly.dev']
 
 TEMPLATES = [
     {

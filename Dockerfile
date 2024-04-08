@@ -5,6 +5,7 @@ FROM python:${PYTHON_VERSION}
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
+ENV FLY_APP_NAME = 'kjon-django'
 # install psycopg2 dependencies.
 RUN apt-get update && apt-get install -y \
     libpq-dev \
@@ -32,4 +33,4 @@ RUN --mount=type=secret,id=DATABASE_URL \
 
 EXPOSE 8000
 
-CMD ["gunicorn", "--bind", ":8000", "--workers", "2", "kjon_django.wsgi"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "--workers", "1", "kjon_django.wsgi"]

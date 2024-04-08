@@ -16,7 +16,7 @@
 
 
 # kjon &middot; django  
-[![Fly Deploy](https://github.com/kjon-life/kjon_django/actions/workflows/fly.yml/badge.svg)](https://github.com/kjon-life/kjon_django/actions/workflows/fly.yml) 
+ 
  ![GitHub commit activity](https://img.shields.io/github/commit-activity/y/kjon-life/kjon_django) 
  ![GitHub License](https://img.shields.io/github/license/kjon-life/kjon_django)
  ![GitHub top language](https://img.shields.io/github/languages/top/kjon-life/kjon_django)
@@ -49,6 +49,13 @@ You can read about it [here](https://fly.io/docs/hands-on/).
 
 ### History:  
 #### Serverless hosted Django w Postgres
+> 2024-04-07 2231  HRS 
+* App deployed on fly.io and available at [https://kjon-django.fly.dev/](https://kjon-django.fly.dev/) or [https://django.jonhwilliams.com/](https://django.jonhwilliams.com/)  
+* GitHub [repository](https://github.com/kjon-life/kjon_django) is now public. 
+```bash
+fly secrets set CSRF_TRUSTED_ORIGINS='https://kjon-django.fly.dev'
+fly secrets set ALLOWED_HOSTS='kjon-django.fly.dev'
+```
 
 #### Local Django
 * Postgres

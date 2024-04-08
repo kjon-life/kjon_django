@@ -1,5 +1,3 @@
-# fly.toml app configuration file generated for kjon-django-proud-dream-2622 on 2024-03-31T22:45:08-05:00
-#
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
@@ -14,13 +12,19 @@ console_command = '/code/manage.py shell'
   release_command = 'python manage.py migrate --noinput'
 
 [env]
-  PORT = '8000'
+  FLY_APP_NAME = "kjon-django"
 
-[http_service]
+[[services]]
   internal_port = 8000
-  force_https = true
-  min_machines_running = 0
-  processes = ['app']
+  protocol = "tcp"
+  
+  [[services.ports]]
+    handlers = ["http"]
+    port = "80"
+
+  [[services.ports]]
+    handlers = ["tls", "http"]
+    port = "443"
 
 [[vm]]
   memory = '1gb'
@@ -30,28 +34,3 @@ console_command = '/code/manage.py shell'
 [[statics]]
   guest_path = '/code/static'
   url_prefix = '/static/'
-
-[[services.http_checks]]
-  grace_period = "10s"
-  interval = "30s"
-  method = "GET"
-  timeout = "5s"
-  path = "/"
-
-[[services.tcp_checks]]
-  interval = "15s"
-  timeout = "2s"
-  grace_period = "1s"
-  restart_limit = 0
-
-[services]
-  auto_stop_machines = true
-  auto_start_machines = true
-
-  [[services.ports]]
-    port = 8080
-    handlers = ["http"]
-
-  [[services.ports]]
-    port = 8443
-    handlers = ["tls"]
